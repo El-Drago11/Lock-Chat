@@ -71,10 +71,10 @@ const UserInputIndex = ({ getUserInput, getToken, setToken, getSecretCodes }: Pr
                         {(getToken && getToken.size) ?
                             Array.from(getToken)?.map(([key, value], index) => (
                                 <div key={index} className="flex flex-col gap-2">
-                                    <Button variant={'secondary'} >
+                                    <Button variant={'secondary'} className="bg-amber-400 hover:bg-amber-500 dark:bg-slate-800 dark:hover:bg-slate-600">
                                         {key}
                                     </Button>
-                                    <Button variant={'secondary'}>
+                                    <Button variant={'secondary'} className="bg-amber-400 hover:bg-amber-500 dark:bg-slate-800 dark:hover:bg-slate-600">
                                         {value?.secret}
                                     </Button>
                                 </div>
@@ -83,7 +83,7 @@ const UserInputIndex = ({ getUserInput, getToken, setToken, getSecretCodes }: Pr
 
                     </div>
                     :
-                    <span className="flex justify-center items-baseline text-2xl font-semibold text-muted">No User Input</span>
+                    <div className="flex justify-center items-center text-2xl font-semibold text-muted h-full">No User Input</div>
             }
         </>
     )

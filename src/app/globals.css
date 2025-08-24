@@ -5,13 +5,9 @@
 
 @layer theme {
   .dark {
-    --color-background: #0a0a0a;
-    --color-foreground: #ededed;
     --color-muted:#bcbcbc;
   }
   .light {
-    --color-background: #ededed;
-    --color-foreground: #0a0a0a;
     --color-muted:#626262;
   }
 }
@@ -25,23 +21,6 @@
   .text-muted{
     color: var(--color-muted);
   }
-
-  /* Other Examples */
-  /* .bg-background {
-    background-color: var(--color-background);
-  }
-
-  .bg-foreground {
-    background-color: var(--color-foreground);
-  }
-
-  .text-background{
-    color: var(--color-background);
-  }
-
-  .text-foreground{
-    color: var(--color-foreground);
-  } */
 }
 
 body {
@@ -94,7 +73,7 @@ body {
 
 :root {
   --radius: 0.625rem;
-  --background: oklch(1 0 0);
+  --background: oklch(97.32% 0.06615 114.031);
   --foreground: oklch(0.129 0.042 264.695);
   --card: oklch(1 0 0);
   --card-foreground: oklch(0.129 0.042 264.695);

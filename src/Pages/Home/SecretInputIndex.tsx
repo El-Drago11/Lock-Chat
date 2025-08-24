@@ -30,11 +30,11 @@ const SecretInputIndex = ({ encryptMessage, getSecretCodes }: Props) => {
             <div className="col-span-3 flex flex-col justify-center">
                 <Button className="bg-green-400 hover:bg-green-600" onClick={() => DecryptUserMessage()}>Decrypt Message</Button>
             </div>
-            <div className="col-span-9 flex flex-col justify-center items-center border-1 rounded-lg overflow-y-auto">
+            <div className="col-span-9 flex flex-col justify-center items-center border-4 rounded-lg max-h-[40svh]">
                 {
                     (encryptMessage && decryptedMessage && (decryptedMessage?.length > 0))
                         ?
-                        <span className="text-lg font-semibold">{decryptedMessage}</span>
+                        <span className="text-lg font-semibold overflow-y-auto p-4">{decryptedMessage}</span>
                         :
                         <span className="text-2xl font-semibold text-muted">
                             Please Paste your message TO DECRYPT message box

@@ -64,10 +64,7 @@ const HomeIndex = () => {
         } else {
             // All characters are valid
             const uniqueInvalid = [...new Set(invalidChars)];
-            toast.error(`Unsupported characters: ${uniqueInvalid.map(char =>
-                char === ' ' ? 'space' : char === '\n' ? 'newline' : char === '\t' ? 'tab' : `"${char}"`
-            ).join(', ')}`);
-            toast.info('We currently support aplhabets and numbers only')
+            toast.error(`Unsupported characters: ${uniqueInvalid.map(char =>char).join(', ')}`);
 
             // Remove invalid character
             const validInput = val.split('').filter(char =>
@@ -93,16 +90,16 @@ const HomeIndex = () => {
                     <Button className="bg-red-400 hover:bg-red-600" onClick={() => copyTheEncryptMessage()}>Copy Encrypt Message</Button>
                 </div>
                 <div className="col-span-6 grid grid-rows-1 overflow-y-auto">
-                    <div className=" row-start-1">
+                    <div className="row-start-1 border-4 p-4 rounded-lg">
                         <UserInputIndex getUserInput={getUserInput} getToken={getToken} setToken={setToken} getSecretCodes={getSecretCodes} />
                     </div>
                 </div>
             </div>
             <div className="grid grid-cols-12 h-[40svh] gap-10">
                 <div className="col-span-4 overflow-y-auto">
-                    <Textarea value={encryptMessage ?? ''} className="w-full h-full overflow-y-auto" placeholder="Please Paste your secret message here to decrypt..." onChange={(e) => setEncryptMessage(e.target.value)} />
+                    <Textarea value={encryptMessage ?? ''} className="w-full h-full" placeholder="Please Paste your secret message here to decrypt..." onChange={(e) => setEncryptMessage(e.target.value)} />
                 </div>
-                <div className="col-span-8">
+                <div className="col-span-8 h-full">
                     <SecretInputIndex encryptMessage={encryptMessage} getSecretCodes={getSecretCodes} />
                 </div>
             </div>
