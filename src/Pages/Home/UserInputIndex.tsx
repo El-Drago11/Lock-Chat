@@ -2,6 +2,7 @@ import { useEffect } from "react";
 import { Button } from "@/components/ui/button"
 import { defaultCodeType } from "@/lib/CodeGenrator";
 import { tokenType } from "./HomeIndex";
+import { toast } from "react-toastify";
 
 
 
@@ -44,7 +45,7 @@ const UserInputIndex = ({ getUserInput, getToken, setToken, getSecretCodes }: Pr
                         const unmappedChars = eachLetters.filter(letter =>
                             !getSecretCodes.some(code => code.key === letter)
                         );
-                        console.warn(`No secret mapping found for characters: ${unmappedChars.join(', ')} in word "${curr}"`);
+                        toast.warn(`No secret mapping found for characters: ${unmappedChars.join(', ')} in word "${curr}"`);
 
                         // Still store the word but mark it as incomplete
                         const obj = {

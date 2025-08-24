@@ -21,9 +21,6 @@ const HomeIndex = () => {
     const [getSecretCodes, setSecretCode] = useState<defaultCodeType[] | null>(null);
     const [encryptMessage, setEncryptMessage] = useState<string | null>(null);
 
-    console.log(getToken)
-
-
     const copyTheEncryptMessage = async () => {
         let space = '';
         if (getSecretCodes) {

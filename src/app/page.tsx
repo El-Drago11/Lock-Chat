@@ -1,5 +1,5 @@
 import { ThemeToggle } from "@/common/ThemeToggle";
-import HomeIndex from "@/Pages/Home/HomeIndex";
+import HomeIndex from "@/pages/Home/HomeIndex";
 
 export default function Home() {
   return (
