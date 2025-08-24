@@ -43,7 +43,6 @@ const HomeIndex = () => {
     }
 
     const checkIsValidKey = (val: string) => {
-        console.log("Values: ", val);
 
         if (!getSecretCodes) return;
 
@@ -80,7 +79,7 @@ const HomeIndex = () => {
         <div className="h-full space-y-10">
             <div className="grid grid-cols-12 h-[40svh] gap-10">
                 <div className="col-span-4 overflow-y-auto">
-                    <Textarea value={getUserInput??''} className="w-full h-full" onChange={(e) => checkIsValidKey(e.target.value)} placeholder="Please enter your message to encrypt..." />
+                    <Textarea value={getUserInput??''} className="w-full h-full" onChange={(e) => checkIsValidKey(e.target.value)} placeholder="Please enter your message to encrypt..."/>
                 </div>
                 <div className="col-span-2 flex flex-col justify-center gap-4">
                     <Button className="bg-red-400 hover:bg-red-600" onClick={() => copyTheEncryptMessage()}>Copy Encrypt Message</Button>
