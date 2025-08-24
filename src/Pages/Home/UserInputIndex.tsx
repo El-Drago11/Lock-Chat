@@ -23,7 +23,7 @@ const UserInputIndex = ({ getUserInput, getToken, setToken, getSecretCodes }: Pr
                 if (tempStore?.has(curr)) {
                     // Add position to existing token
                     const existingToken = tempStore?.get(curr);
-                    existingToken?.pos?.push(index.toString());
+                    existingToken?.pos?.push(index);
                 } else {
                     // Process new word
                     const eachLetters = curr?.split('');
@@ -35,7 +35,7 @@ const UserInputIndex = ({ getUserInput, getToken, setToken, getSecretCodes }: Pr
                     // Check if all letters were found
                     if (getSecretLetters && getSecretLetters.length === eachLetters.length) {
                         const obj = {
-                            'pos': [index.toString()],
+                            'pos': [index],
                             'secret': getSecretLetters
                         };
                         tempStore.set(curr, obj);
@@ -48,7 +48,7 @@ const UserInputIndex = ({ getUserInput, getToken, setToken, getSecretCodes }: Pr
 
                         // Still store the word but mark it as incomplete
                         const obj = {
-                            'pos': [index.toString()],
+                            'pos': [index],
                             'secret': [...getSecretLetters, '[INCOMPLETE]']
                         };
                         tempStore.set(curr, obj);

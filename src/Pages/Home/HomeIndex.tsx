@@ -1,7 +1,7 @@
 'use client'
 
 import { Textarea } from "@/components/ui/textarea";
-import { InputEvent, useEffect, useState } from "react";
+import { useEffect, useState } from "react";
 import UserInputIndex from "./UserInputIndex";
 import { defaultCodeType, generateDefaultCode } from "@/lib/CodeGenrator";
 import SecretInputIndex from "./SecretInputIndex";
@@ -9,7 +9,7 @@ import { Button } from "@/components/ui/button";
 import { toast } from "react-toastify";
 
 export interface tokenType {
-    pos: string[];
+    pos: number[];
     secret: string[];
 }
 
@@ -31,14 +31,25 @@ const HomeIndex = () => {
             if (val?.value) space = val?.value;
         }
         try {
-            let encryptMessage = '';
+            const encryptMessage: { pos: number, secret: string }[] = [];
             getToken?.forEach((value) => {
-                encryptMessage += (value?.secret.join('-') + '-' + space + '-')
+                value?.pos?.forEach((curr) => {
+                    const obj = {
+                        pos:curr,
+                        secret: (value?.secret.join('-') + '-' + space + '-')
+                    }
+                    encryptMessage.push(obj)
+                })
             });
-            await navigator.clipboard.writeText(encryptMessage)
+            encryptMessage.sort((a, b) => a.pos - b.pos);
+            let encryptText = '';
+            encryptMessage?.forEach((curr)=>{
+                encryptText += curr?.secret;
+            })
+            await navigator.clipboard.writeText(encryptText)
         } catch (error) {
             console.error(error)
-            alert('Unable to copy message')
+            toast.error('Unable to copy message')
         }
     }
 
@@ -79,7 +90,7 @@ const HomeIndex = () => {
         <div className="h-full space-y-10">
             <div className="grid grid-cols-12 h-[40svh] gap-10">
                 <div className="col-span-4 overflow-y-auto">
-                    <Textarea value={getUserInput??''} className="w-full h-full" onChange={(e) => checkIsValidKey(e.target.value)} placeholder="Please enter your message to encrypt..."/>
+                    <Textarea value={getUserInput ?? ''} className="w-full h-full" onChange={(e) => checkIsValidKey(e.target.value)} placeholder="Please enter your message to encrypt..." />
                 </div>
                 <div className="col-span-2 flex flex-col justify-center gap-4">
                     <Button className="bg-red-400 hover:bg-red-600" onClick={() => copyTheEncryptMessage()}>Copy Encrypt Message</Button>
@@ -92,7 +103,7 @@ const HomeIndex = () => {
             </div>
             <div className="grid grid-cols-12 h-[40svh] gap-10">
                 <div className="col-span-4 overflow-y-auto">
-                    <Textarea value={encryptMessage??''} className="w-full h-full overflow-y-auto" placeholder="Please Paste your secret message here to decrypt..." onChange={(e) => setEncryptMessage(e.target.value)} />
+                    <Textarea value={encryptMessage ?? ''} className="w-full h-full overflow-y-auto" placeholder="Please Paste your secret message here to decrypt..." onChange={(e) => setEncryptMessage(e.target.value)} />
                 </div>
                 <div className="col-span-8">
                     <SecretInputIndex encryptMessage={encryptMessage} getSecretCodes={getSecretCodes} />
