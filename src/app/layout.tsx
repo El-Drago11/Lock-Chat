@@ -4,6 +4,8 @@ import "./globals.css";
 import { ThemeProvider } from "@/Providers/ThemeProvider";
 import { ThemeToggle } from "@/common/ThemeToggle";
 import Link from "next/link";
+import ImageComponent from "@/common/ImageComponent";
+import Logo from '../../public/logo.svg'
 
 const poppins = Poppins({
   subsets: ["latin"],
@@ -35,7 +37,10 @@ export default function RootLayout({
           <div className="flex flex-col min-h-screen gap-16 bg-background text-foreground ">
             {/* Header with Theme Toggle */}
             <header className="w-full flex justify-between items-center p-8 sm:p-6 bg-yellow-400 dark:bg-slate-900">
-              <Link className="text-3xl font-bold cursor-pointer" href={'/'}>Lock Chat</Link>
+              <div className="flex gap-2 justify-center items-center">
+                <ImageComponent src={Logo} alt="logo_image" className="h-10 w-10 bg-white"/>
+                <Link className="text-3xl font-bold cursor-pointer" href={'/'}>Lock Chat</Link>
+              </div>
               <div><ThemeToggle /></div>
             </header>
 
