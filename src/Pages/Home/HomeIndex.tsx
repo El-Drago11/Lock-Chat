@@ -44,6 +44,7 @@ const HomeIndex = () => {
                 encryptText += curr?.secret;
             })
             await navigator.clipboard.writeText(encryptText)
+            toast.success('Copied to Clipboard')
         } catch (error) {
             console.error(error)
             toast.error('Unable to copy message')
@@ -75,6 +76,10 @@ const HomeIndex = () => {
         }
     };
 
+    const changeSecret = (val:string,key:string)=>{
+        console.log(`chnaging ${key}`,val)
+    }
+
     useEffect(() => {
         const data = generateDefaultCode();
         setSecretCode(data);
@@ -87,7 +92,7 @@ const HomeIndex = () => {
                     <Textarea value={getUserInput ?? ''} className="w-full h-full" onChange={(e) => checkIsValidKey(e.target.value)} placeholder="Please enter your message to encrypt..." />
                 </div>
                 <div className="col-span-2 flex flex-col justify-center gap-4">
-                    <Button className="bg-red-400 hover:bg-red-600" onClick={() => copyTheEncryptMessage()}>Copy Encrypt Message</Button>
+                    <Button className="bg-red-500 hover:bg-red-600" onClick={() => copyTheEncryptMessage()} disabled={!getUserInput?.length}>Copy Encrypt Message</Button>
                 </div>
                 <div className="col-span-6 grid grid-rows-1 overflow-y-auto">
                     <div className="row-start-1 border-4 p-4 rounded-lg">
@@ -105,16 +110,18 @@ const HomeIndex = () => {
             </div>
             <div className="grid grid-cols-12 gap-10">
                 <div className="col-span-12 text-3xl font-bold">Your Secert Dictionary (key-value)</div>
+                <div className="col-span-12 flex flex-wrap w-full gap-10">
                 {
                     (getSecretCodes && getSecretCodes.length) ?
                         getSecretCodes?.map((curr, index) => (
-                            <div key={index} className="flex border-1 p-2 rounded-md justify-between">
-                                <span className="font-bold">{curr?.key}</span>
-                                <span>{curr?.value}</span>
+                            <div key={index} className="flex border-1 p-2 rounded-md justify-between gap-4 w-28">
+                                <div className="font-bold">{curr?.key}</div>
+                                <input defaultValue={curr?.value} className="w-1/2 text-center" onChange={(e)=>changeSecret(e.currentTarget.value,curr?.key)}/>
                             </div>
                         ))
                         : <></>
                 }
+                </div>
             </div>
         </div>
 
