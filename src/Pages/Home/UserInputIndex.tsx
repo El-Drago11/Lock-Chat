@@ -83,7 +83,7 @@ const UserInputIndex = ({ getUserInput, getToken, setToken, getSecretCodes }: Pr
 
                     </div>
                     :
-                    <div className="flex justify-center items-center text-2xl font-semibold text-muted h-full">No User Input</div>
+                    <div className="flex justify-center items-center text-xl font-semibold text-muted h-full">No User Input</div>
             }
         </>
     )

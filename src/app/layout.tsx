@@ -34,14 +34,17 @@ export default function RootLayout({
           enableSystem
           disableTransitionOnChange
         >
-          <div className="flex flex-col min-h-screen gap-16 bg-background text-foreground ">
+          <div className="flex flex-col min-h-screen gap-6 bg-background text-foreground ">
             {/* Header with Theme Toggle */}
             <header className="w-full flex justify-between items-center p-8 sm:p-6 bg-yellow-400 dark:bg-slate-900">
               <div className="flex gap-2 justify-center items-center">
                 <ImageComponent src={Logo} alt="logo_image" className="h-10 w-10 bg-white"/>
                 <Link className="text-3xl font-bold cursor-pointer" href={'/'}>Lock Chat</Link>
               </div>
-              <div><ThemeToggle /></div>
+              <div className="flex gap-6 justify-end items-center">
+                <Link className="text-lg font-semibold cursor-pointer" href={`#yourSecret`}>Secrets</Link>
+                <ThemeToggle />
+              </div>
             </header>
 
             <main className="flex-1 p-8 sm:p-6">
