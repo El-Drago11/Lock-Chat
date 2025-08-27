@@ -2,10 +2,6 @@ import {BlogsList} from "@/lib/Blogs"
 
 const Assignment = async() => {
 
-  // const {slug} = await params;
-
-  // const FilterQuestion = BlogsList.filter((curr)=>curr?.assignmentNo===slug)
-
   return (
     <>
       <div className="space-y-10 p-4">
