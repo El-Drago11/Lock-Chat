@@ -26,7 +26,7 @@ export default function RootLayout({
   children: React.ReactNode;
 }) {
   return (
-    <html lang="en" suppressHydrationWarning>
+    <html lang="en">
       <body className={poppins.className}>
         <ThemeProvider
           attribute="class"
@@ -36,19 +36,19 @@ export default function RootLayout({
         >
           <div className="flex flex-col min-h-screen gap-6 bg-background text-foreground ">
             {/* Header with Theme Toggle */}
-            <header className="w-full flex justify-between items-center p-8 sm:p-6 bg-yellow-400 dark:bg-slate-900">
+            <header className="w-full flex justify-between items-center p-3 sm:p-6 bg-yellow-400 dark:bg-slate-900">
               <div className="flex gap-2 justify-center items-center">
-                <ImageComponent src={Logo} alt="logo_image" className="h-10 w-10 bg-white"/>
-                <Link className="text-3xl font-bold cursor-pointer" href={'/'}>Lock Chat</Link>
+                <ImageComponent src={Logo} alt="logo_image" className="h-6 md:h-10 w-6 md:w-10 bg-white"/>
+                <Link className="text-sm md:text-xl lg:text-3xl font-bold cursor-pointer " href={'/'}>Lock Chat</Link>
               </div>
               <div className="flex gap-6 justify-end items-center">
-                <Link className="text-lg font-semibold cursor-pointer" href={`/blog`}>Blog</Link>
-                <Link className="text-lg font-semibold cursor-pointer" href={`/#yourSecret`}>Secrets</Link>
+                <Link className="text-sm md:text-lg font-semibold cursor-pointer" href={`/blog`}>Blog</Link>
+                <Link className="text-sm md:text-lg font-semibold cursor-pointer" href={`/#yourSecret`}>Secrets</Link>
                 <ThemeToggle />
               </div>
             </header>
 
-            <main className="flex-1 p-8 sm:p-6">
+            <main className="flex-1 p-2 sm:p-6">
               {children}
             </main>
 
