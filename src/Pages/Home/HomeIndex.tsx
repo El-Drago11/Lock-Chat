@@ -7,7 +7,7 @@ import { defaultCodeType, generateDefaultCode } from "@/lib/CodeGenrator";
 import SecretInputIndex from "./SecretInputIndex";
 import { Button } from "@/components/ui/button";
 import { toast } from "react-toastify";
-
+import SecretCodes from './SecretCodes'
 export interface tokenType {
     pos: number[];
     secret: string[];
@@ -77,10 +77,6 @@ const HomeIndex = () => {
         }
     };
 
-    const changeSecret = (val: string, key: string) => {
-        console.log(`chnaging ${key}`, val)
-    }
-
     useEffect(() => {
         const data = generateDefaultCode();
         setSecretCode(data);
@@ -92,7 +88,7 @@ const HomeIndex = () => {
                 <div className="grid grid-cols-12 h-[40svh] gap-10">
                     <div className="col-span-4 flex flex-col overflow-y-auto gap-y-2 h-full">
                         <div className="text-lg flex items-center gap-2">
-                            <span><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" className="lucide lucide-text-cursor-input-icon lucide-text-cursor-input"><path d="M12 20h-1a2 2 0 0 1-2-2 2 2 0 0 1-2 2H6" /><path d="M13 8h7a2 2 0 0 1 2 2v4a2 2 0 0 1-2 2h-7" /><path d="M5 16H4a2 2 0 0 1-2-2v-4a2 2 0 0 1 2-2h1" /><path d="M6 4h1a2 2 0 0 1 2 2 2 2 0 0 1 2-2h1" /><path d="M9 6v12" /></svg></span>
+                            <span><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" className="lucide lucide-text-cursor-input-icon lucide-text-cursor-input"><path d="M12 20h-1a2 2 0 0 1-2-2 2 2 0 0 1-2 2H6" /><path d="M13 8h7a2 2 0 0 1 2 2v4a2 2 0 0 1-2 2h-7" /><path d="M5 16H4a2 2 0 0 1-2-2v-4a2 2 0 0 1 2-2h1" /><path d="M6 4h1a2 2 0 0 1 2 2 2 2 0 0 1 2-2h1" /><path d="M9 6v12" /></svg></span>
                             <span className="text-orange-500 font-bold">Text Input</span>
                         </div>
                         <div className="h-full overflow-y-auto">
@@ -122,7 +118,7 @@ const HomeIndex = () => {
                 <div className="grid grid-cols-12 h-[40svh] gap-10">
                     <div className="col-span-4 overflow-y-auto flex flex-col gap-2">
                         <div className="text-lg flex items-center gap-2">
-                            <span><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" className="lucide lucide-user-lock-icon lucide-user-lock"><circle cx="10" cy="7" r="4" /><path d="M10.3 15H7a4 4 0 0 0-4 4v2" /><path d="M15 15.5V14a2 2 0 0 1 4 0v1.5" /><rect width="8" height="5" x="13" y="16" rx=".899" /></svg></span>
+                            <span><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" className="lucide lucide-user-lock-icon lucide-user-lock"><circle cx="10" cy="7" r="4" /><path d="M10.3 15H7a4 4 0 0 0-4 4v2" /><path d="M15 15.5V14a2 2 0 0 1 4 0v1.5" /><rect width="8" height="5" x="13" y="16" rx=".899" /></svg></span>
                             <span className="text-orange-500 font-bold">Encrypted Input</span>
                         </div>
                         <Textarea value={encryptMessage ?? ''} className="w-full h-full" placeholder="Please Paste your secret message here to decrypt..." onChange={(e) => setEncryptMessage(e.target.value)} />
@@ -135,11 +131,11 @@ const HomeIndex = () => {
             <div className="grid grid-cols-12 gap-10 border-t-2 border-dashed py-10" id="yourSecret">
                 <div className="col-span-12 text-xl font-bold flex items-center gap-2">
                     <span>
-                        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" className="lucide lucide-book-key-icon lucide-book-key"><path d="m19 3 1 1" /><path d="m20 2-4.5 4.5" /><path d="M20 7.898V21a1 1 0 0 1-1 1H6.5a1 1 0 0 1 0-5H20" /><path d="M4 19.5v-15A2.5 2.5 0 0 1 6.5 2h7.844" /><circle cx="14" cy="8" r="2" /></svg>
+                        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" className="lucide lucide-book-key-icon lucide-book-key"><path d="m19 3 1 1" /><path d="m20 2-4.5 4.5" /><path d="M20 7.898V21a1 1 0 0 1-1 1H6.5a1 1 0 0 1 0-5H20" /><path d="M4 19.5v-15A2.5 2.5 0 0 1 6.5 2h7.844" /><circle cx="14" cy="8" r="2" /></svg>
                     </span>
                     <span>Your Secert Dictionary (key-value)</span>
                 </div>
-                <div className="col-span-12 flex flex-wrap w-full gap-10 justify-evenly">
+                {/* <div className="col-span-12 flex flex-wrap w-full gap-10 justify-evenly">
                     {
                         (getSecretCodes && getSecretCodes.length) ?
                             getSecretCodes?.map((curr, index) => (
@@ -150,7 +146,8 @@ const HomeIndex = () => {
                             ))
                             : <></>
                     }
-                </div>
+                </div> */}
+                <SecretCodes getSecretCodes={getSecretCodes} setSecretCode={setSecretCode}/>
             </div>
         </div>
     )

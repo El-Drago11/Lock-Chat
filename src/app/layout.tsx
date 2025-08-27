@@ -42,7 +42,8 @@ export default function RootLayout({
                 <Link className="text-3xl font-bold cursor-pointer" href={'/'}>Lock Chat</Link>
               </div>
               <div className="flex gap-6 justify-end items-center">
-                <Link className="text-lg font-semibold cursor-pointer" href={`#yourSecret`}>Secrets</Link>
+                <Link className="text-lg font-semibold cursor-pointer" href={`/blog`}>Blog</Link>
+                <Link className="text-lg font-semibold cursor-pointer" href={`/#yourSecret`}>Secrets</Link>
                 <ThemeToggle />
               </div>
             </header>

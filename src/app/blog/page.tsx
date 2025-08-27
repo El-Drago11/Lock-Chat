@@ -1,16 +1,16 @@
 import {BlogsList} from "@/lib/Blogs"
 
-const Assignment = async({params}:{params:Promise<{slug:string}>}) => {
+const Assignment = async() => {
 
-  const {slug} = await params;
+  // const {slug} = await params;
 
-  const FilterQuestion = BlogsList.filter((curr)=>curr?.assignmentNo===slug)
+  // const FilterQuestion = BlogsList.filter((curr)=>curr?.assignmentNo===slug)
 
   return (
     <>
       <div className="space-y-10 p-4">
         {
-          (FilterQuestion && FilterQuestion?.length)?FilterQuestion?.map((curr,index)=>(
+          (BlogsList && BlogsList?.length)?BlogsList?.map((curr,index)=>(
               <div key={index} className="space-y-4 text-2xl border-1 p-4 rounded-lg">
                     <div className="flex gap-x-2 font-bold">
                       <span className="text-nowrap">Question : </span>
