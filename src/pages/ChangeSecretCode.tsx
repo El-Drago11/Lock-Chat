@@ -35,7 +35,7 @@ const ChangeSecretCode = ({ defaultValue, defaultKey, getSecretCodes, setSecretC
 
    const handleKeyDown = (e: React.KeyboardEvent<HTMLInputElement>) => {
     if (e.key === "Enter") {
-      e.preventDefault(); // prevent form submit
+      e.preventDefault();
       changeSecret(inputValue, defaultKey, defaultValue);
     }
   };
