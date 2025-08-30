@@ -33,6 +33,13 @@ const ChangeSecretCode = ({ defaultValue, defaultKey, getSecretCodes, setSecretC
     if (newDictionary) setSecretCode(newDictionary);
   };
 
+   const handleKeyDown = (e: React.KeyboardEvent<HTMLInputElement>) => {
+    if (e.key === "Enter") {
+      e.preventDefault(); // prevent form submit
+      changeSecret(inputValue, defaultKey, defaultValue);
+    }
+  };
+
   useEffect(() => {
     setInputValue(defaultValue);
   }, [defaultValue]);
@@ -43,6 +50,7 @@ const ChangeSecretCode = ({ defaultValue, defaultKey, getSecretCodes, setSecretC
       className="w-1/2 text-center border rounded px-2 py-1"
       onChange={(e) => setInputValue(e.target.value)}
       onBlur={(e) => changeSecret(e.target.value, defaultKey, defaultValue)}
+      onKeyDown={handleKeyDown}
     />
   );
 };
